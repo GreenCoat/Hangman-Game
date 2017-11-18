@@ -9,6 +9,17 @@ var fruit = ["apple", "orange", "tomato", "banana", "durian", "lemon", "peach"];
 var vegetables = ["cucumber", "carrot", "potato", "onion", "pepper", "broccoli"];
 var animals = ["monkey", "elephant", "parrot", "horse", "sheep"];
 var wordList = fruit;
+var pictures = [
+	"....._______<br/>.....|.....|<br/>.....X.....|<br/>..../|\\....|<br/>.....|.....|<br/>..../.\\....|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>..../|\\....|<br/>.....|.....|<br/>..../......|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>..../|\\....|<br/>.....|.....|<br/>...........|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>..../|\\....|<br/>...........|<br/>...........|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>..../|.....|<br/>...........|<br/>...........|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>.....|.....|<br/>...........|<br/>...........|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>.....0.....|<br/>...........|<br/>...........|<br/>...........|<br/>...........|<br/>============",
+	"....._______<br/>.....|.....|<br/>...........|<br/>...........|<br/>...........|<br/>...........|<br/>...........|<br/>============",
+	]
+
 
 function gameReset(){
 	console.log("reset");
@@ -20,6 +31,7 @@ function gameReset(){
 	document.getElementById("totalWins").innerHTML = score;
 	displayWord();
 	displayGuesses();
+	document.getElementById("letterGuesses").innerHTML = "None";
 	gameOn = true;
 }
 
@@ -56,6 +68,7 @@ function displayGuesses(){
 	}
 	document.getElementById("letterGuesses").innerHTML = tempString;
 	document.getElementById("guessesLeft").innerHTML = guessesLeft;
+	document.getElementById("picture").innerHTML = pictures[guessesLeft];
 }
 
 document.getElementById("reset").onclick = function(){gameReset();};

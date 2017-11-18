@@ -5,6 +5,7 @@
 	<title>Hangman Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 </head>
 <body>
 	<div>
@@ -12,21 +13,32 @@
 			<div>Uh oh, looks like someone is in trouble.  Due to the perverse legal system of this land they will be executed unless you can guess an arbitrary word within 7 moves.  Press any letter key to make a guess.</div>
 
 			<div>Wins:</div>
-			<div id="totalWins"></div>
+			<div id="totalWins">0</div>
 
 			<div>Current Word</div>
-			<div id="currentWord"></div>
+			<div id="currentWord">None</div>
 
 			<div>Guesses remaining:</div>
-			<div id="guessesLeft"></div>
+			<div id="guessesLeft">0</div>
 
 			<div>Letters Guessed</div>
-			<div id="letterGuesses"></div>
+			<div id="letterGuesses">None</div>
 
-			<button id="reset">Reset</button>
+			<button id="reset">Start</button>
 			<button id="fruit" class="selected">Fruit</button>
 			<button id="vegetables">Vegetables</button>
 			<button id="animals">Animals</button>
+
+			<div id="picture">
+				....._______<br/>
+				.....|.....|<br/>
+				...........|<br/>
+				...........|<br/>
+				...........|<br/>
+				...........|<br/>
+				...........|<br/>
+				============
+			</div>
 		</div>
 	</div>
 	<script src="assets/javascript/game.js"></script>	

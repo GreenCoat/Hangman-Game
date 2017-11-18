@@ -1,3 +1,7 @@
 .selected {
 	border: 1px solid blue;
 }
+
+#picture {
+	font-family: 'VT323', monospace;
+}
