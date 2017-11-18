@@ -60,6 +60,25 @@ function displayGuesses(){
 
 document.getElementById("reset").onclick = function(){gameReset();};
 
+document.getElementById("fruit").onclick = function(){
+	wordList = fruit;
+	document.getElementById("fruit").className = "selected";
+	document.getElementById("vegetables").className = "";
+	document.getElementById("animals").className = "";
+};
+document.getElementById("vegetables").onclick = function(){
+	wordList = vegetables;
+	document.getElementById("fruit").className = "";
+	document.getElementById("vegetables").className = "selected";
+	document.getElementById("animals").className = "";
+};
+document.getElementById("animals").onclick = function(){
+	wordList = animals;
+	document.getElementById("fruit").className = "";
+	document.getElementById("vegetables").className = "";
+	document.getElementById("animals").className = "selected";
+};
+
 document.onkeyup = function(evt) {
 	var l = evt.key.toLowerCase();
 	if(hidden.indexOf(l.toUpperCase()) == -1 && letterGuesses.indexOf(l.toUpperCase()) == -1 && gameOn == true) {
