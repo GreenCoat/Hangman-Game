@@ -1,21 +1,26 @@
 var guessesLeft;
+var gameOn = false;
 var score = 0;
 var word;
-var wordList;
 var answers = [];
 var hidden = [];
 var letterGuesses = [];
 var fruit = ["apple", "orange", "tomato", "banana", "durian", "lemon", "peach"];
 var vegetables = ["cucumber", "carrot", "potato", "onion", "pepper", "broccoli"];
-var weapons = ["sword", "halberd", "lance", "spear", "rapier"];
-
-gameReset();
+var animals = ["monkey", "elephant", "parrot", "horse", "sheep"];
+var wordList = fruit;
 
 function gameReset(){
+	console.log("reset");
 	guessesLeft = 7;
-	wordList = fruit;
+	answers = [];
+	hidden = [];
+	letterGuesses = [];
 	word = getWord(wordList);
 	document.getElementById("totalWins").innerHTML = score;
+	displayWord();
+	displayGuesses();
+	gameOn = true;
 }
 
 function getWord(list){
@@ -34,45 +39,59 @@ function getWord(list){
 			hidden.push("_");
 		}
 	});
-
-	console.log(word);
-	console.log(answers);
-	console.log(hidden);
 };
+
+function displayWord(){
+	var tempString = "";
+	for(var i = 0; i < hidden.length; i++){
+		tempString += hidden[i];
+	}
+	document.getElementById("currentWord").innerHTML = tempString;
+}
+
+function displayGuesses(){
+	var tempString = "";
+	for(var i = 0; i < letterGuesses.length; i++){
+		tempString += letterGuesses[i];
+	}
+	document.getElementById("letterGuesses").innerHTML = tempString;
+	document.getElementById("guessesLeft").innerHTML = guessesLeft;
+}
+
+document.getElementById("reset").onclick = function(){gameReset();};
 
 document.onkeyup = function(evt) {
 	var l = evt.key.toLowerCase();
+	if(hidden.indexOf(l.toUpperCase()) == -1 && letterGuesses.indexOf(l.toUpperCase()) == -1 && gameOn == true) {
+		if(l == "a" || l == "b" || l == "c" || l == "d" || l == "e" || l == "f" ||
+	   	   l == "g" || l == "h" || l == "i" || l == "j" || l == "k" || l == "l" ||
+	       l == "m" || l == "n" || l == "o" || l == "p" || l == "q" || l == "r" ||
+	       l == "s" || l == "t" || l == "u" || l == "v" || l == "w" || l == "x" ||
+	       l == "y" || l == "z") {
 
-	if(l == "a" || l == "b" || l == "c" || l == "d" || l == "e" || l == "f" ||
-	   l == "g" || l == "h" || l == "i" || l == "j" || l == "k" || l == "l" ||
-	   l == "m" || l == "n" || l == "o" || l == "p" || l == "q" || l == "r" ||
-	   l == "s" || l == "t" || l == "u" || l == "v" || l == "w" || l == "x" ||
-	   l == "y" || l == "z") {
-
-		if(answers.indexOf(l) != -1){
-
-			for(var i = 0; i < answers.length; i++){
-				if(answers[i] == l){
-					hidden[i] = answers[i].toUpperCase();
-					console.log(hidden); 
+			if(answers.indexOf(l) != -1){
+				for(var i = 0; i < answers.length; i++){
+					if(answers[i] == l){
+						hidden[i] = answers[i].toUpperCase();
+						displayWord();
+					}
 				}
-			}
 
-			if(hidden.indexOf("_") == -1){
-				console.log("You win!");
-			}
-		} else {
-			letterGuesses.push(l.toUpperCase()+" ");
-			console.log(letterGuesses);
-			guessesLeft--;
-			if(guessesLeft == 0){
-				console.log("No guesses remaining, you lose!");
+				if(hidden.indexOf("_") == -1){
+				score += 1;
+				document.getElementById("totalWins").innerHTML = score;
+				gameOn = false;
+				}
 			} else {
-				console.log("Miss! You have " + guessesLeft + " guesses left.");
+				letterGuesses.push(l.toUpperCase());
+				letterGuesses.push(" ");
+				document.getElementById("letterGuesses").innerHTML = letterGuesses;
+				guessesLeft--;
+				displayGuesses();
+				if(guessesLeft == 0){
+					gameOn = false;
+				} 
 			}
-		}
-		console.log(l);
-	} else {
-		console.log("Invalid key");
-	};
+		};
+	}
 };
