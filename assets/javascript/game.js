@@ -4,9 +4,9 @@ var word;
 var answers = [];
 var hidden = [];
 var letterGuesses = [];
-var fruit = ["apple", "orange", "tomato", "banana", "durian", "lemon", "peach"];
-var vegetables = ["cucumber", "carrot", "potato", "onion", "pepper", "broccoli"];
-var animals = ["monkey", "elephant", "parrot", "horse", "sheep"];
+var fruit = ["apple", "orange", "tomato", "banana", "durian", "lemon", "peach", "grape", "mango"];
+var vegetables = ["cucumber", "carrot", "potato", "onion", "pepper", "broccoli", "squash", "cabbage", "lettuce"];
+var animals = ["monkey", "elephant", "parrot", "horse", "sheep", "zebra", "koala", "cougar", "raccoon", "eagle"];
 var wordList = fruit;
 var pictures = [
 	"....._______<br/>.....|.....|<br/>.....X.....|<br/>..../|\\....|<br/>.....|.....|<br/>..../.\\....|<br/>...........|<br/>============",
