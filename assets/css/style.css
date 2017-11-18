@@ -1,7 +1,28 @@
+body {
+	margin: 0px auto;
+}
+
+img {
+	width: 150px;
+	height: 150px;
+}
+
 .selected {
 	border: 1px solid blue;
 }
 
+#instructionDisplay {
+	float:left;
+	width: 75%;
+}
+
+#gameDisplay {
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+
 #picture {
 	font-family: 'VT323', monospace;
+	font-size: 24px;
 }

@@ -1,5 +1,4 @@
 var guessesLeft;
-var gameOn = false;
 var score = 0;
 var word;
 var answers = [];
@@ -22,7 +21,6 @@ var pictures = [
 
 
 function gameReset(){
-	console.log("reset");
 	guessesLeft = 7;
 	answers = [];
 	hidden = [];
@@ -32,7 +30,6 @@ function gameReset(){
 	displayWord();
 	displayGuesses();
 	document.getElementById("letterGuesses").innerHTML = "None";
-	gameOn = true;
 }
 
 function getWord(list){
@@ -71,30 +68,31 @@ function displayGuesses(){
 	document.getElementById("picture").innerHTML = pictures[guessesLeft];
 }
 
-document.getElementById("reset").onclick = function(){gameReset();};
-
 document.getElementById("fruit").onclick = function(){
 	wordList = fruit;
 	document.getElementById("fruit").className = "selected";
 	document.getElementById("vegetables").className = "";
 	document.getElementById("animals").className = "";
+	gameReset();
 };
 document.getElementById("vegetables").onclick = function(){
 	wordList = vegetables;
 	document.getElementById("fruit").className = "";
 	document.getElementById("vegetables").className = "selected";
 	document.getElementById("animals").className = "";
+	gameReset();
 };
 document.getElementById("animals").onclick = function(){
 	wordList = animals;
 	document.getElementById("fruit").className = "";
 	document.getElementById("vegetables").className = "";
 	document.getElementById("animals").className = "selected";
+	gameReset();
 };
 
 document.onkeyup = function(evt) {
 	var l = evt.key.toLowerCase();
-	if(hidden.indexOf(l.toUpperCase()) == -1 && letterGuesses.indexOf(l.toUpperCase()) == -1 && gameOn == true) {
+	if(hidden.indexOf(l.toUpperCase()) == -1 && letterGuesses.indexOf(l.toUpperCase()) == -1) {
 		if(l == "a" || l == "b" || l == "c" || l == "d" || l == "e" || l == "f" ||
 	   	   l == "g" || l == "h" || l == "i" || l == "j" || l == "k" || l == "l" ||
 	       l == "m" || l == "n" || l == "o" || l == "p" || l == "q" || l == "r" ||
@@ -112,7 +110,7 @@ document.onkeyup = function(evt) {
 				if(hidden.indexOf("_") == -1){
 				score += 1;
 				document.getElementById("totalWins").innerHTML = score;
-				gameOn = false;
+				gameReset();
 				}
 			} else {
 				letterGuesses.push(l.toUpperCase());
@@ -121,9 +119,11 @@ document.onkeyup = function(evt) {
 				guessesLeft--;
 				displayGuesses();
 				if(guessesLeft == 0){
-					gameOn = false;
+					gameReset();
 				} 
 			}
 		};
 	}
 };
+
+gameReset();

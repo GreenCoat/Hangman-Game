@@ -9,26 +9,7 @@
 </head>
 <body>
 	<div>
-		<div id="display">
-			<div>Uh oh, looks like someone is in trouble.  Due to the perverse legal system of this land they will be executed unless you can guess an arbitrary word within 7 moves.  Press any letter key to make a guess.</div>
-
-			<div>Wins:</div>
-			<div id="totalWins">0</div>
-
-			<div>Current Word</div>
-			<div id="currentWord">None</div>
-
-			<div>Guesses remaining:</div>
-			<div id="guessesLeft">0</div>
-
-			<div>Letters Guessed</div>
-			<div id="letterGuesses">None</div>
-
-			<button id="reset">Start</button>
-			<button id="fruit" class="selected">Fruit</button>
-			<button id="vegetables">Vegetables</button>
-			<button id="animals">Animals</button>
-
+		<div id="gameDisplay" class="column">
 			<div id="picture">
 				....._______<br/>
 				.....|.....|<br/>
@@ -39,6 +20,30 @@
 				...........|<br/>
 				============
 			</div>
+
+			<div>Current Word</div>
+			<div id="currentWord">None</div>
+			
+			<div>Letters Guessed</div>
+			<div id="letterGuesses">None</div>
+
+			<div>Guesses remaining:</div>
+			<div id="guessesLeft">0</div>
+		</div>
+
+		<div id="instructionDisplay" class="column">
+			<p>Uh oh, looks like someone is in trouble.  Due to the perverse legal system of this land they will be executed unless you can guess an arbitrary word within 7 moves.</p>
+
+			<p>Select from one of the categories bellow.</p>
+
+			<p>Press any letter key to make a guess.</p>
+			
+			<img src="assets/images/fruit.jpg" id="fruit" class="selected">
+			<img src="assets/images/vegetables.jpg" id="vegetables">
+			<img src="assets/images/animals.jpg" id="animals">
+
+			<div>Wins:</div>
+			<div id="totalWins">0</div>
 		</div>
 	</div>
 	<script src="assets/javascript/game.js"></script>	
